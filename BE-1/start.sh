@@ -13,4 +13,4 @@ git config pull.rebase false
 git pull origin main
 
 cd BE-1/
-bash setup.sh
+sudo bash setup.sh
