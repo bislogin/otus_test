@@ -2,7 +2,7 @@
 
 sudo systemctl start nginx
 
-sudo cat <<EOF > /etc/nginx/sites-available/default
+cat <<EOF sudo tee /etc/nginx/sites-available/default
 upstream backend {
 	server 172.20.1.20:80;
 	server 172.20.1.30:80;
