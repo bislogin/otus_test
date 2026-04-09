@@ -1,6 +1,6 @@
 #!/bin/bash
 
-systemctl start nginx
+sudo systemctl start nginx
 
 sudo cat <<EOF > /etc/nginx/sites-available/default
 upstream backend {
@@ -43,4 +43,4 @@ server {
 
 EOF
 
-systemctl restart nginx
+sudo systemctl restart nginx
