@@ -2,7 +2,7 @@
 
 systemctl start nginx
 
-cat <<EOF > /etc/nginx/sites-available/default
+sudo cat <<EOF > /etc/nginx/sites-available/default
 upstream backend {
 	server 172.20.1.20:80;
 	server 172.20.1.30:80;
@@ -42,3 +42,5 @@ server {
 }
 
 EOF
+
+systemctl restart nginx
