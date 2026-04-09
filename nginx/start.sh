@@ -7,3 +7,5 @@ cd /home/bazhenov/git/
 git init
 git config --global user.name bazhenov
 git config --global user.email bazhenilya@gmail.com
+git branch -M main
+git remote add origin git@github.com:bislogin/otus_test.git
