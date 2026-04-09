@@ -12,3 +12,4 @@ git remote add origin git@github.com:bislogin/otus_test.git
 git pull origin main
 
 cd FE/
+bash setup.sh
