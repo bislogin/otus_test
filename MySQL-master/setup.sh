@@ -78,10 +78,8 @@ sudo su
 
 service mysql restart
 
-mysql
-
-CREATE USER repl@'%' IDENTIFIED WITH 'caching_sha2_password' BY 'password#2026'; 
-GRANT REPLICATION SLAVE ON *.* TO repl@'%';
+mysql -u root -e "CREATE USER repl@'%' IDENTIFIED WITH 'caching_sha2_password' BY 'password#2026';" 
+mysql -u root -e"GRANT REPLICATION SLAVE ON *.* TO repl@'%';"
 
 
 
