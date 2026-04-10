@@ -1,5 +1,6 @@
 #!/bin/bash
 
+export DEBIAN_FRONTEND=noninteractive
 sudo apt update && sudo apt install mysql-server-8.0 git -y 
 
 mkdir /home/bazhenov/git
