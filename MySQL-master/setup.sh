@@ -79,6 +79,7 @@ EOF
 sudo service mysql restart
 
 sudo mysql <<EOF
+DROP USER IF EXISTS 'repl'@'%';
 CREATE USER repl@'%' IDENTIFIED WITH 'caching_sha2_password' BY 'password#2026';
 GRANT REPLICATION SLAVE ON *.* TO repl@'%';
 EOF
