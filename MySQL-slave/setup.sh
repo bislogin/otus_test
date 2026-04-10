@@ -1,7 +1,5 @@
 #!/bin/bash
 
-sudo su 
-
 cat <<EOF | sudo tee /etc/mysql/mysql.conf.d/mysqld.cnf 
 
 [mysqld]
@@ -77,6 +75,8 @@ max_binlog_size   = 100M
 # binlog_ignore_db      = include_database_name
 
 EOF
+
+sudo su 
 
 service mysql restart
 
