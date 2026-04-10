@@ -2,7 +2,7 @@
 
 sudo su 
 
-cat <<EOF | tee /etc/mysql/mysql.conf.d/mysqld.cnf 
+cat <<EOF | sudo tee /etc/mysql/mysql.conf.d/mysqld.cnf 
 
 [mysqld]
 #                                                                                               
