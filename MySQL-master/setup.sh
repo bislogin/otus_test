@@ -79,7 +79,7 @@ EOF
 sudo service mysql restart
 
 sudo mysql -u root -e "CREATE USER repl@'%' IDENTIFIED WITH 'caching_sha2_password' BY 'password#2026';" 
-sudo mysql -u root -e"GRANT REPLICATION SLAVE ON *.* TO repl@'%';"
+sudo mysql -u root -e "GRANT REPLICATION SLAVE ON *.* TO repl@'%';"
 
 
 
