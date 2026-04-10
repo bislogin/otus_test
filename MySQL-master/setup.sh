@@ -1,5 +1,8 @@
 #!/bin/bash
 
+sudo systemctl start mysql
+sudo systemctl enable mysql
+
 cat <<EOF | sudo tee /etc/mysql/mysql.conf.d/mysqld.cnf 
 
 [mysqld]
