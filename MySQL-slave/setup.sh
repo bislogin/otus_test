@@ -79,9 +79,7 @@ max_binlog_size   = 100M
 
 EOF
 
-sudo su 
-
-service mysql restart
+sudo service mysql restart
 
 sudo mysql -u root -e "STOP REPLICA;"
 sudo mysql -u root -e "CHANGE REPLICATION SOURCE TO SOURCE_HOST='172.20.1.40', SOURCE_USER='repl', SOURCE_PASSWORD='password#2026', SOURCE_AUTO_POSITION = 1, GET_SOURCE_PUBLIC_KEY = 1;"
