@@ -1,5 +1,8 @@
 #!/bin/bash
 
+sudo systemctl start mysql
+sudo systemctl enable mysql
+
 cat <<EOF | sudo tee /etc/mysql/mysql.conf.d/mysqld.cnf 
 
 [mysqld]
@@ -80,8 +83,6 @@ sudo su
 
 service mysql restart
 
-mysql
-
-STOP REPLICA;
-CHANGE REPLICATION SOURCE TO SOURCE_HOST='172.20.1.40', SOURCE_USER='repl', SOURCE_PASSWORD='password#2026', SOURCE_AUTO_POSITION = 1, GET_SOURCE_PUBLIC_KEY = 1;
-START REPLICA;
+sudo mysql -u root -e "STOP REPLICA;"
+sudo mysql -u root -e "CHANGE REPLICATION SOURCE TO SOURCE_HOST='172.20.1.40', SOURCE_USER='repl', SOURCE_PASSWORD='password#2026', SOURCE_AUTO_POSITION = 1, GET_SOURCE_PUBLIC_KEY = 1;"
+sudo mysql -u root -e "START REPLICA;"
