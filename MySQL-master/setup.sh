@@ -1,2 +1,3 @@
+#!/bin/bash
 
-sudo nano mysqld.cnf 
+sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf 
