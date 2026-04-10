@@ -15,7 +15,7 @@ for DB in "$DATABASES"; do
 
         for TABLE in $TABLES; do
 
-                mysqldump --set-gtid-purged=OFF --add-drop-table --add-locks --create-options --disable-keys --extended-insert --single-transaction --quick --set-charset --events --routines --triggers -uroot  "$DB" "$TABLE" | gzip ->
+                mysqldump --set-gtid-purged=OFF --add-drop-table --add-locks --create-options --disable-keys --extended-insert --single-transaction --quick --set-charset --events --routines --triggers -uroot  "$DB" "$TABLE" | gzip -1 > "$DB_DIR/$TABLE.sql.gz"
 
         done
 done
