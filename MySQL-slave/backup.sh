@@ -20,4 +20,4 @@ for DB in "$DATABASES"; do
         done
 done
 
-scp -i ~/.ssh/id_rsa -r /home/bazhenov/mysql/backup/ bazhenov@172.20.1.100:/home/bazhenov/backup/mysql
+scp -r /home/bazhenov/mysql/backup/ bazhenov@172.20.1.100:/home/bazhenov/backup/mysql
