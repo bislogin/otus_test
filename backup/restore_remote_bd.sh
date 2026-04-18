@@ -9,7 +9,7 @@ DB_NAME="otus"
 
 BACKUP_DIR="/home/bazhenov/backup/mysql/backup/"
 
-LOCAL_BACKUP_PATH=$(ls -t ${BACKUP_DIR}/*.sql.gz | head -n1)
+LOCAL_BACKUP_PATH=$(ls -t ${BACKUP_DIR}/*[0-9][0-9]-[0-9][0-9]-[0-9][0-9][0-9][0-9]*.sql.gz 2>/dev/null | head -n 1)
 
 ssh ${REMOTE_SSH_USER}@${REMOTE_SSH_HOST} "mysql -u ${DB_USER} -p'${DB_PASS}' -e 'CREATE DATABASE IF NOT EXISTS ${DB_NAME};'"
 
