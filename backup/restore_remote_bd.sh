@@ -4,19 +4,15 @@ REMOTE_SSH_USER="bazhenov"
 REMOTE_SSH_HOST="172.20.1.40"
 
 DB_USER="root"
-DB_NAME=""
+DB_NAME="otus"
 
-LOCAL_BACKUP_PATH="./backup.sql.gz"
-
-# --- ЛОГИКА ---
-
-echo "Начинаю процесс восстановления на удаленный сервер $REMOTE_SSH_HOST..."
+LOCAL_BACKUP_PATH="/home/bazhenov/backup/mysql/test_tbl.sql.gz"
 
 # 1. Создаем базу, если её нет (через SSH)
-ssh ${REMOTE_SSH_USER}@${REMOTE_SSH_HOST} "mysql -u ${DB_USER} -p'${DB_PASS}' -e 'CREATE DATABASE IF NOT EXISTS ${DB_NAME} CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'"
+ssh ${REMOTE_SSH_USER}@${REMOTE_SSH_HOST} "mysql -u ${DB_USER} -e 'CREATE DATABASE IF NOT EXISTS ${DB_NAME} CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'"
 
 if [ $? -eq 0 ]; then
-    echo "База данных '$DB_NAME' готова (проверена/создана)."
+    echo "Databases '$DB_NAME' готова (проверена/создана)."
 else
     echo "Ошибка при создании базы данных."
     exit 1
