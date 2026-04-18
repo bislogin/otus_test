@@ -9,9 +9,13 @@ DB_NAME="otus"
 
 BACKUP_DIR="/home/bazhenov/backup/mysql/backup"
 
-LOCAL_BACKUP_PATH=$(find "$BACKUP_ROOT" -type f -name "*.sql.gz" -exec ls -t {} + | head -n 1)
+LOCAL_BACKUP_PATH=$(find "$BACKUP_ROOT" -type f -name "*.sql.gz" -printf "%T@ %p\n" 2>/dev/null | sort -rn | head -n 1 | cut -d' ' -f2-)
 
-ssh ${REMOTE_SSH_USER}@${REMOTE_SSH_HOST} "mysql -u ${DB_USER} -p'${DB_PASS}' -e 'CREATE DATABASE IF NOT EXISTS ${DB_NAME};'"
+if [ -z "$LATEST_BACKUP" ] || [ ! -f "$LATEST_BACKUP" ]; then
+    exit 1
+fi
+
+ssh ${REMOTE_SSH_USER}@${REMOTE_SSH_HOST} "mysql -u ${DB_USER} -p'${DB_PASS}' -e 'CREATE DATABASE IF NOT EXISTS ${DB_NAME} CHARACTER SET utf8mb4;'"
 
 if [ $? -eq 0 ]; then
     echo "Databases '$DB_NAME' created."
