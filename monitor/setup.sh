@@ -7,3 +7,8 @@ curl -LO https://github.com/prometheus/node_exporter/releases/download/v1.6.1/no
 tar xzvf node_exporter-*.t*gz
 tar xzvf prometheus-*.t*gz
 
+sudo useradd --no-create-home --shell /usr/sbin/nologin prometheus
+sudo useradd --no-create-home --shell /bin/false node_exporter
+
+sudo cp node_exporter-*.linux-amd64/node_exporter /usr/local/bin
+sudo chown node_exporter: /usr/local/bin/node_exporter
