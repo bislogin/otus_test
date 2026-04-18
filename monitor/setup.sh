@@ -29,3 +29,8 @@ ExecStart=/usr/local/bin/node_exporter
 WantedBy=multi-user.target
 EOF
 
+sudo systemctl daemon-reload
+sudo systemctl start node_exporter
+#sudo systemctl status node_exporter
+sudo systemctl enable node_exporter
+
