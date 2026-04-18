@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt update && sudo apt install git -y 
+sudo apt update && sudo apt install {jnet,h,io,if,a}top iptraf-ng nmon git -y 
 
 mkdir /home/bazhenov/git
 cd /home/bazhenov/git/
