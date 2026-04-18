@@ -7,9 +7,9 @@ DB_USER="repl"
 DB_PASS="password#2026"
 DB_NAME="otus"
 
-BACKUP_DIR="/home/bazhenov/backup/mysql/backup/"
+BACKUP_DIR="/home/bazhenov/backup/mysql/backup"
 
-LOCAL_BACKUP_PATH=$(find "$BACKUP_ROOT" -name "*.sql.gz" -printf "%T@ %p\n" | sort -rn | head -n 1 | cut -d' ' -f2-)
+LOCAL_BACKUP_PATH=$(find "$BACKUP_ROOT" -type f -name "*.sql.gz" -exec ls -t {} + | head -n 1)
 
 ssh ${REMOTE_SSH_USER}@${REMOTE_SSH_HOST} "mysql -u ${DB_USER} -p'${DB_PASS}' -e 'CREATE DATABASE IF NOT EXISTS ${DB_NAME};'"
 
