@@ -11,3 +11,6 @@ git branch -M main
 git remote add origin git@github.com:bislogin/otus_test.git
 git config pull.rebase false
 git pull origin main
+
+cd log/
+sudo bash setup.sh
