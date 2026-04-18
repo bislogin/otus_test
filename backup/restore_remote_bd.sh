@@ -12,10 +12,6 @@ BACKUP_DIR="/home/bazhenov/backup/mysql/backup"
 echo "1."
 LOCAL_BACKUP_PATH=$(find "$BACKUP_DIR" -type f -name "*.sql.gz" -exec ls -t {} + | head -n 1)
 
-#if [ -z "$LATEST_BACKUP" ] || [ ! -f "$LATEST_BACKUP" ]; then
-#    exit 1
-#fi
-
 echo "2."
 ssh ${REMOTE_SSH_USER}@${REMOTE_SSH_HOST} "mysql -u ${DB_USER} -p'${DB_PASS}' -e 'CREATE DATABASE IF NOT EXISTS ${DB_NAME} CHARACTER SET utf8mb4;'"
 
