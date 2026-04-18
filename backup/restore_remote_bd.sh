@@ -8,7 +8,7 @@ DB_NAME="otus"
 
 LOCAL_BACKUP_PATH="/home/bazhenov/backup/mysql/test_tbl.sql.gz"
 
-ssh ${REMOTE_SSH_USER}@${REMOTE_SSH_HOST} "sudo mysql -u ${DB_USER} -e 'CREATE DATABASE IF NOT EXISTS ${DB_NAME};'"
+ssh -t ${REMOTE_SSH_USER}@${REMOTE_SSH_HOST} "sudo mysql -u ${DB_USER} -e 'CREATE DATABASE IF NOT EXISTS ${DB_NAME};'"
 
 if [ $? -eq 0 ]; then
     echo "Databases '$DB_NAME' created."
