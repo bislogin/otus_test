@@ -1,8 +1,8 @@
 #!/bin/bash
 
-systemctl start apache2
-systemctl enable apache2
-
+sudo systemctl start apache2
+sudo systemctl enable apache2
+sudo 
 cat <<EOF | sudo tee /etc/apache2/sites-enabled/000-default.conf
 <VirtualHost 172.20.1.30:80>
         # The ServerName directive sets the request scheme, hostname and port that
