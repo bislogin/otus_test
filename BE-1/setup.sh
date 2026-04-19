@@ -1,7 +1,8 @@
 #!/bin/bash
 
-systemctl start apache2
-systemctl enable apache2
+sudo systemctl start apache2
+sudo systemctl enable apache2
+sudo systemctl start node_exporter
 
 cat <<EOF | sudo tee /etc/apache2/sites-enabled/000-default.conf
 <VirtualHost 172.20.1.20:80>
