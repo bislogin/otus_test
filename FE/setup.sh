@@ -1,6 +1,7 @@
 #!/bin/bash
 
 sudo systemctl start nginx
+sudo systemctl start node_exporter
 
 cat <<EOF | sudo tee /etc/nginx/sites-available/default
 upstream backend {
