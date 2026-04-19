@@ -1,64 +1,6 @@
 #!/bin/bash
 
-cd /home/bazhenov/
-curl -LO https://github.com/prometheus/prometheus/releases/download/v2.46.0/prometheus-2.46.0.linux-amd64.tar.gz
-curl -LO https://github.com/prometheus/node_exporter/releases/download/v1.6.1/node_exporter-1.6.1.linux-amd64.tar.gz
-
-tar xzvf node_exporter-*.t*gz
-tar xzvf prometheus-*.t*gz
-
-sudo useradd --no-create-home --shell /usr/sbin/nologin prometheus
-sudo useradd --no-create-home --shell /bin/false node_exporter
-
-sudo cp node_exporter-*.linux-amd64/node_exporter /usr/local/bin
-sudo chown node_exporter: /usr/local/bin/node_exporter
-
-cat <<EOF | sudo tee /etc/systemd/system/node_exporter.service
-[Unit]
-Description=Node Exporter
-Wants=network-online.target
-After=network-online.target
-
-[Service]
-User=node_exporter
-Group=node_exporter
-Type=simple
-ExecStart=/usr/local/bin/node_exporter
-
-[Install]
-WantedBy=multi-user.target
-EOF
-
-sudo systemctl daemon-reload
-sudo systemctl start node_exporter
-#sudo systemctl status node_exporter
-sudo systemctl enable node_exporter
-
-sudo mkdir {/etc/,/var/lib/}prometheus
-sudo cp -vi prometheus-*.linux-amd64/prom{etheus,tool} /usr/local/bin
-sudo cp -rvi prometheus-*.linux-amd64/{console{_libraries,s},prometheus.yml} /etc/prometheus/
-sudo chown -Rv prometheus: /usr/local/bin/prom{etheus,tool} /etc/prometheus/ /var/lib/prometheus/
-
-cat <<EOF | sudo tee /etc/systemd/system/prometheus.service
-[Unit]
-Description=Prometheus Monitoring
-Wants=network-online.target
-After=network-online.target
-
-[Service]
-User=prometheus
-Group=prometheus
-Type=simple
-ExecStart=/usr/local/bin/prometheus \
---config.file /etc/prometheus/prometheus.yml \
---storage.tsdb.path /var/lib/prometheus/ \
---web.console.templates=/etc/prometheus/consoles \
---web.console.libraries=/etc/prometheus/console_libraries
-ExecReload=/bin/kill -HUP $MAINPID
-
-[Install]
-WantedBy=multi-user.target
-EOF
+sudo apt install prometheus
 
 cat <<EOF | sudo tee /etc/prometheus/prometheus.yml
 # my global config
@@ -89,15 +31,18 @@ scrape_configs:
     # scheme defaults to 'http'.
 
     static_configs:
-    - targets: ['localhost:9090']
+    - targets: ['172.20.1.70:9090']
   
   - job_name: 'node_exporter'
     scrape_interval: 5s
     static_configs:
-      - targets: ['localhost:9100']
+      - targets: ['172.20.1.70:9100','172.20.1.10:9100','172.20.1.20:9100','172.20.1.30:9100']
 EOF
 
+sudo apt-get install -y adduser libfontconfig1 musl
+cd /home/bazhenov/
+sudo dpkg -i grafana_13.0.1_24542347077_linux_amd64.deb
+
 sudo systemctl daemon-reload
-sudo systemctl start prometheus
-sudo systemctl enable prometheus
+sudo systemctl enable --now grafana-server
 
