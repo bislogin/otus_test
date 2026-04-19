@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt update && sudo apt install nginx git -y 
+sudo apt update && sudo apt install nginx git prometheus-node-exporter -y 
 
 mkdir /home/bazhenov/git
 cd /home/bazhenov/git/
