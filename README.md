@@ -21,4 +21,29 @@ IP Адресация:
 
 План восстановления:  
 1) При выходе сервера из стоя, на новом сервере настраиваем сетевые настройки в netplan согласно таблици с ip адресацией.
-2) 
+2) добавляем пользователя:
+```
+useradd -m -s /bin/bash username
+passwd username
+usermod -aG sudo username
+```
+
+3) Генерируем ssh ключ и добавляем его в git
+```
+ssh-keygen
+cat ~/.ssh/id_rsa.pub
+```
+4) Устанавляваем git и скачиваем репозиторий:
+```
+sudo apt update && sudo apt install git -y 
+mkdir /home/bazhenov/git
+cd /home/bazhenov/git/
+git init
+git config --global user.name bazhenov
+git config --global user.email bazhenilya@gmail.com
+git branch -M main
+git remote add origin git@github.com:bislogin/otus_test.git
+git config pull.rebase false
+git pull origin main
+```
+5) Заходим в нужную директорию, и запускаем `setup.sh`
