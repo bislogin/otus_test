@@ -38,7 +38,19 @@ sudo dpkg -i kibana-8.17.1-amd64.deb
 sudo systemctl daemon-reload
 sudo systemctl enable --now kibana.service
 
-cat <<EOF | sudo tee /etc/elasticsearch/jvm.options.d/jvm.options
--Xms1g
--Xmx1g
+cat <<EOF | sudo tee /etc/kibana/kibana.yml
+server.port: 5601
+server.host: "0.0.0.0"
+logging:
+  appenders:
+    file:
+      type: file
+      fileName: /vat/log/kibana/kibana.log
+      layout:
+        type: json
+  root:
+    appenders:
+      - default
+      - file
+pid.file: /run/kibana/kibana.pid
 EOF
