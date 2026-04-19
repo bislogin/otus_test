@@ -4,7 +4,7 @@ cd /home/bazhenov
 
 sudo apt install default-jdk -y
 
-sudo dpkg -i elasticsearch-8.17.1-amd64.deb
+sudo dpkg -i elasticsearch_8.17.1_amd64-224190-a8d54b.deb
 
 cat <<EOF | sudo tee /etc/elasticsearch/jvm.options.d/jvm.options
 -Xms1g
@@ -35,7 +35,7 @@ EOF
 sudo systemctl daemon-reload
 sudo systemctl enable --now elasticsearch.service
 
-sudo dpkg -i kibana-8.17.1-amd64.deb
+sudo dpkg -i kibana_8.17.1_amd64-224190-9c79ef.deb
 
 sudo systemctl daemon-reload
 sudo systemctl enable --now kibana.service
@@ -57,7 +57,7 @@ logging:
 pid.file: /run/kibana/kibana.pid
 EOF
 
-sudo dpkg -i logstash-8.17.1-amd64.deb
+sudo dpkg -i logstash_8.17.1_amd64-224190-b63239.deb
 sudo systemctl enable --now logstash.service
 
 cat <<EOF | sudo tee /etc/logstash/logstash.yml
@@ -106,7 +106,7 @@ EOF
 
 sudo systemctl restart logstash.service
 
-sudo dpkg -i filebeat-8.17.1-amd64.deb
+sudo dpkg -i filebeat_8.17.1_amd64-224190-6bb8de.deb
 
 cat <<EOF | sudo tee /etc/filebeat/filebeat.yml
 filebeat.inputs:
