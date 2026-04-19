@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo apt update && sudo apt install git -y 
+
 mkdir /home/bazhenov/git
 cd /home/bazhenov/git/
 git init
