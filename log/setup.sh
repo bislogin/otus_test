@@ -47,7 +47,7 @@ logging:
   appenders:
     file:
       type: file
-      fileName: /vat/log/kibana/kibana.log
+      fileName: /var/log/kibana/kibana.log
       layout:
         type: json
   root:
