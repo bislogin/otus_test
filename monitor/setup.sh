@@ -2,7 +2,7 @@
 
 sudo apt install prometheus
 
-cat <<EOF | sudo tee /etc/prometheus/prometheus.yml
+cat <<'EOF' | sudo tee /etc/prometheus/prometheus.yml
 # my global config
 global:
   scrape_interval:     15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
