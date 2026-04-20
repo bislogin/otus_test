@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /home/bazhenov
+cd /home/bazhenov/log/log/
 
 sudo apt install default-jdk -y
 
