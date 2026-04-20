@@ -3,7 +3,7 @@
 sudo systemctl start nginx
 sudo systemctl start node_exporter
 
-cat <<EOF | sudo tee /etc/nginx/sites-available/default
+cat <<'EOF' | sudo tee /etc/nginx/sites-available/default
 upstream backend {
 	server 172.20.1.20:80;
 	server 172.20.1.30:80;
@@ -47,7 +47,7 @@ cd /home/bazhenov
 
 sudo dpkg -i filebeat_8.17.1_amd64-224190-6bb8de.deb
 
-cat <<EOF | sudo tee /etc/filebeat/filebeat.yml
+cat <<'EOF' | sudo tee /etc/filebeat/filebeat.yml
 filebeat.inputs:
 - type: filestream
   id: test-nginx
