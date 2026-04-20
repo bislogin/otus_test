@@ -3,7 +3,7 @@
 sudo systemctl start mysql
 sudo systemctl enable mysql
 
-cat <<EOF | sudo tee /etc/mysql/mysql.conf.d/mysqld.cnf 
+cat <<'EOF' | sudo tee /etc/mysql/mysql.conf.d/mysqld.cnf 
 
 [mysqld]
 #                                                                                               
@@ -78,7 +78,7 @@ EOF
 
 sudo service mysql restart
 
-sudo mysql <<EOF
+sudo mysql <<'EOF'
 DROP USER IF EXISTS 'repl'@'%';
 CREATE USER repl@'%' IDENTIFIED WITH 'caching_sha2_password' BY 'password#2026';
 GRANT ALL PRIVILEGES ON *.* TO repl@'%' WITH GRANT OPTION;
