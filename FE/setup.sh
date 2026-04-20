@@ -59,7 +59,6 @@ output.logstash:
   hosts: ["172.20.1.60:5400"]
 
 logging.level: debug
-
 EOF  
 
 systemctl restart filebeat
