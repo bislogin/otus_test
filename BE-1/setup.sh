@@ -401,5 +401,4 @@ cat <<'EOF' | sudo tee /var/www/html/index.html
     </div>
   </body>
 </html>
-
 EOF
