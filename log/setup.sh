@@ -138,5 +138,5 @@ processors:
 
 EOF  
 
-
+sudo systemctl restart filebeat
 
