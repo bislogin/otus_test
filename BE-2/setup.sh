@@ -2,9 +2,9 @@
 
 sudo systemctl start apache2
 sudo systemctl enable apache2
-sudo systemctl start node_exporter
+sudo systemctl start prometheus-node-exporter
 
-cat <<EOF | sudo tee /etc/apache2/sites-enabled/000-default.conf
+cat <<'EOF' | sudo tee /etc/apache2/sites-enabled/000-default.conf
 <VirtualHost 172.20.1.30:80>
         # The ServerName directive sets the request scheme, hostname and port that
         # the server uses to identify itself. This is used when creating
@@ -37,7 +37,7 @@ cat <<EOF | sudo tee /etc/apache2/sites-enabled/000-default.conf
 EOF
 
 
-cat <<EOF | sudo tee /var/www/html/index.html
+cat <<'EOF' | sudo tee /var/www/html/index.html
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <!--
