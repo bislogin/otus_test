@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt install prometheus
+sudo apt install prometheus -y
 
 cat <<'EOF' | sudo tee /etc/prometheus/prometheus.yml
 # my global config
