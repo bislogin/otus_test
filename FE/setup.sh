@@ -54,31 +54,15 @@ sudo dpkg -i filebeat_8.17.1_amd64-224190-6bb8de.deb
 cat <<EOF | sudo tee /etc/filebeat/filebeat.yml
 filebeat.inputs:
 - type: filestream
-  paths:
-    - /var/log/nginx/*.log
-
+  id: test-nginx
   enabled: true
-  exclude_files: ['.gz$']
-  prospector.scanner.exclude_files: ['.gz$']
-
-filebeat.config.modules:
-  path: ${path.config}/modules.d/*.yml
-  reload.enabled: false
-
-setup.template.settings:
-  index.number_of_shards: 1
-
-setup.kibana:
+  paths:
+    - /var/log/nginx/*.log     
 
 output.logstash:
   hosts: ["172.20.1.60:5400"]
 
-processors:
-  - add_host_metadata:
-      when.not.contains.tags: forwarded
-  - add_cloud_metadata: ~
-  - add_docker_metadata: ~
-  - add_kubernetes_metadata: ~
+logging.level: debug
 
 EOF  
 
