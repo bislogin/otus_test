@@ -122,9 +122,20 @@ filebeat.config.modules:
   path: ${path.config}/modules.d/*.yml
   reload.enabled: false
 
+setup.template.settings:
+  index.number_of_shards: 1
+
+setup.kibana:
+
 output.logstash:
   hosts: ["localhost:5400"]
 
+processors:
+  - add_host_metadata:
+      when.not.contains.tags: forwarded
+  - add_cloud_metadata: ~
+  - add_docker_metadata: ~
+  - add_kubernetes_metadata: ~
 
 EOF
 
