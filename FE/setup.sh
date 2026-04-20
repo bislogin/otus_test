@@ -81,3 +81,5 @@ processors:
   - add_kubernetes_metadata: ~
 
 EOF  
+
+systemctl restart filebeat
