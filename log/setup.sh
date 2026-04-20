@@ -6,12 +6,12 @@ sudo apt install default-jdk -y
 
 sudo dpkg -i elasticsearch_8.17.1_amd64-224190-a8d54b.deb
 
-cat <<EOF | sudo tee /etc/elasticsearch/jvm.options.d/jvm.options
+cat <<'EOF' | sudo tee /etc/elasticsearch/jvm.options.d/jvm.options
 -Xms1g
 -Xmx1g
 EOF
 
-cat <<EOF | sudo tee /etc/elasticsearch/elasticsearch.yml
+cat <<'EOF' | sudo tee /etc/elasticsearch/elasticsearch.yml
 path.data: /var/lib/elasticsearch
 path.logs: /var/log/elasticsearch
 
@@ -39,7 +39,7 @@ sudo dpkg -i kibana_8.17.1_amd64-224190-9c79ef.deb
 sudo systemctl daemon-reload
 sudo systemctl enable --now kibana.service
 
-cat <<EOF | sudo tee /etc/kibana/kibana.yml
+cat <<'EOF' | sudo tee /etc/kibana/kibana.yml
 server.port: 5601
 server.host: "0.0.0.0"
 logging:
@@ -59,7 +59,7 @@ EOF
 sudo dpkg -i logstash_8.17.1_amd64-224190-b63239.deb
 sudo systemctl enable --now logstash.service
 
-cat <<EOF | sudo tee /etc/logstash/logstash.yml
+cat <<'EOF' | sudo tee /etc/logstash/logstash.yml
 path.data: /var/lib/logstash
 path.config: /etc/logstash/conf.d
 path.logs: /var/log/logstash/
@@ -107,7 +107,7 @@ sudo systemctl restart logstash.service
 
 sudo dpkg -i filebeat_8.17.1_amd64-224190-6bb8de.deb
 
-cat <<EOF | sudo tee /etc/filebeat/filebeat.yml
+cat <<'EOF' | sudo tee /etc/filebeat/filebeat.yml
 filebeat.inputs:
 - type: filestream
   paths:
@@ -137,6 +137,3 @@ processors:
   - add_kubernetes_metadata: ~
 
 EOF  
-
-sudo systemctl restart filebeat
-
