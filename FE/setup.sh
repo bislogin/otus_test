@@ -47,7 +47,7 @@ cd /home/bazhenov
 
 sudo dpkg -i filebeat_8.17.1_amd64-224190-6bb8de.deb
 
-cat <<'EOF' | sudo tee /etc/filebeat/filebeat.yml
+cat <<EOF | sudo tee /etc/filebeat/filebeat.yml
 filebeat.inputs:
 - type: filestream
   id: test-nginx
