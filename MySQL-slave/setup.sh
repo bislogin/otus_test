@@ -76,7 +76,6 @@ binlog_expire_logs_seconds    = 2592000
 max_binlog_size   = 100M
 # binlog_do_db          = include_database_name
 # binlog_ignore_db      = include_database_name
-
 EOF
 
 sudo service mysql restart
