@@ -8,7 +8,6 @@ upstream backend {
 	server 172.20.1.20:80;
 	server 172.20.1.30:80;
 }
-
 server {
         listen       80;
         listen       [::]:80;
@@ -23,9 +22,7 @@ server {
             proxy_set_header Host $host;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
             proxy_set_header X-Real-IP $remote_addr;
-
 		}
-
 		location ~ \.php$ {
 			include fastcgi_params;
 			root /var/www/html;
@@ -42,7 +39,6 @@ server {
         location = /50x.html {
         }
 }
-
 EOF
 
 sudo systemctl restart nginx
