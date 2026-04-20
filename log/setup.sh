@@ -27,8 +27,7 @@ xpack.security.transport.ssl:
   verification_mode: certificate
   keystore.path: certs/transport.p12
   truststore.path: certs/transport.p12
-cluster.initial_master_nodes: ["elk"]
-
+discovery.type: single-node
 http.host: 0.0.0.0
 EOF
 
