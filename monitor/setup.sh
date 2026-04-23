@@ -1,6 +1,7 @@
 #!/bin/bash
 
 sudo apt install prometheus -y
+sudo systemctl restart systemd-timesyncd
 
 cat <<'EOF' | sudo tee /etc/prometheus/prometheus.yml
 # my global config
