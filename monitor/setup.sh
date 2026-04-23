@@ -45,4 +45,4 @@ sudo dpkg -i grafana_13.0.1_24542347077_linux_amd64.deb
 
 sudo systemctl daemon-reload
 sudo systemctl enable --now grafana-server
-
+sudo systemctl restart prometheus
