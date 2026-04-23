@@ -1,6 +1,7 @@
 #!/bin/bash
 
 sudo apt update && sudo apt install git -y 
+sudo systemctl restart systemd-timesyncd
 
 mkdir /home/bazhenov/git
 cd /home/bazhenov/git/
