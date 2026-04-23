@@ -3,6 +3,7 @@
 sudo systemctl start apache2
 sudo systemctl enable apache2
 sudo systemctl start prometheus-node-exporter
+sudo systemctl restart systemd-timesyncd
 
 cat <<'EOF' | sudo tee /etc/apache2/sites-enabled/000-default.conf
 <VirtualHost 172.20.1.30:80>
