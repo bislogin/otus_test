@@ -2,6 +2,7 @@
 
 sudo systemctl start mysql
 sudo systemctl enable mysql
+sudo systemctl restart systemd-timesyncd
 
 cat <<'EOF' | sudo tee /etc/mysql/mysql.conf.d/mysqld.cnf 
 
