@@ -2,6 +2,7 @@
 
 sudo systemctl start nginx
 sudo systemctl start prometheus-node-exporter
+sudo systemctl restart systemd-timesyncd
 
 cat <<'EOF' | sudo tee /etc/nginx/sites-available/default
 upstream backend {
