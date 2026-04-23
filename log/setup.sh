@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo systemctl restart systemd-timesyncd
+
 cd /home/bazhenov/log/
 
 sudo apt install default-jdk -y
