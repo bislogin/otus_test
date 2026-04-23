@@ -43,7 +43,10 @@ sudo apt-get install -y adduser libfontconfig1 musl
 cd /home/bazhenov/
 sudo dpkg -i grafana_13.0.1_24542347077_linux_amd64.deb
 
-sudo systemctl restart prometheus
+sudo systemctl stop prometheus
+sudo rm -rf /var/lib/prometheus/metrics2/*
+sudo systemctl start prometheus
+
 sudo systemctl daemon-reload
 sudo systemctl enable --now grafana-server
 
